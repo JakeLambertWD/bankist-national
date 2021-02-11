@@ -27,23 +27,25 @@ const closeModal = function () {
   overlay.classList.add('hidden');
 };
 
+// onClick handler to open Modal
 btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
-
+// onClick handler to close Modal
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
-
+// onKeydown escape to close Modal
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
     closeModal();
   }
 });
 
-// smooth scrolling
-btnScrollTo.addEventListener('click', function (e) {
-  const s1coords = section1.getBoundingClientRect();
-  // scroll to
-  section1.scrollIntoView({ behavior: 'smooth' });
-});
+// // smooth scrolling to Section 1
+// btnScrollTo.addEventListener('click', function (e) {
+//   // return the size of an element and its position relative to the viewport
+//   const s1coords = section1.getBoundingClientRect();
+//   // scroll the specified element into the visible area of the browser window.
+//   section1.scrollIntoView({ behavior: 'smooth' });
+// });
 
 // nav system
 document.querySelector('.nav__links').addEventListener('click', function (e) {
@@ -51,15 +53,14 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
   // determine what element originated the event
   if (e.target.classList.contains('nav__link')) {
-    // get attribute of href
+    // get contents in the href
     const id = e.target.getAttribute('href');
-    // scroll to
+    // scroll to the href
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
 
 // tabbed component
-
 tabsContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
 
@@ -79,7 +80,7 @@ tabsContainer.addEventListener('click', function (e) {
     .classList.add('operations__content--active');
 });
 
-// menu fade animation
+// nav bar fade animation
 const handleHover = function (e) {
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
